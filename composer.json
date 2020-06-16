@@ -1,5 +1,5 @@
 {
-    "name": "aginev/login-activity",
+    "name": "ktree/login-activity",
     "description": "Track users login activity for Laravel 5",
 	  "keywords": ["login activity", "login activity for Laravel 5", "Laravel 5 login activity"],
     "homepage": "http://aginev.com",
