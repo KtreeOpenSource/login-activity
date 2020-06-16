@@ -42,15 +42,15 @@ class LoginActivityServiceProvider extends ServiceProvider
     public function boot(Dispatcher $dispatcher)
     {
         // Merge config
-        $this->mergeConfigFrom(base_path('vendor/aginev/login-activity/config/login-activity.php'), 'login-activity');
+        $this->mergeConfigFrom(base_path('vendor/ktree/login-activity/config/login-activity.php'), 'login-activity');
         // Publish config
         $this->publishes([
-            base_path('vendor/aginev/login-activity/config/login-activity.php') => config_path('login-activity.php'),
+            base_path('vendor/ktree/login-activity/config/login-activity.php') => config_path('login-activity.php'),
         ], 'config');
 
         // Publish migrations
         $this->publishes([
-            base_path('vendor/aginev/login-activity/migrations/create_user_login_activities_table.php') => database_path('/migrations/' . date('Y_m_d_His', time()) . '_create_user_login_activities_table.php'),
+            base_path('vendor/ktree/login-activity/migrations/create_user_login_activities_table.php') => database_path('/migrations/' . date('Y_m_d_His', time()) . '_create_user_login_activities_table.php'),
         ], 'migrations');
 
         // Register event subscriber
