@@ -7,17 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserLoginActivity extends Model
 {
-    /**
-     * Removes the "updated_at" column
-     */
-    const UPDATED_AT = null;
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'user_login_activities';
+    protected $table = 'user__login_activities';
 
     /**
      * The attributes that aren't mass assignable.
@@ -31,14 +27,14 @@ class UserLoginActivity extends Model
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = ['created_at'];
+    protected $dates = ['createdAt'];
 
 
     /**

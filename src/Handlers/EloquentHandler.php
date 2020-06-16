@@ -46,7 +46,7 @@ class EloquentHandler implements LogActivityInterface
     {
         $past = Carbon::now()->subDays($offset);
 
-        UserLoginActivity::where('created_at', '<=', $past)->delete();
+        UserLoginActivity::where('createdAt', '<=', $past)->delete();
 
         return true;
     }
@@ -67,7 +67,7 @@ class EloquentHandler implements LogActivityInterface
      * @return mixed
      */
     public function getLatestLogs($limit = null) {
-        return UserLoginActivity::latest()->take($this->setLimit($limit))->get();
+        return UserLoginActivity::take($this->setLimit($limit))->get();
     }
 
 
@@ -87,7 +87,7 @@ class EloquentHandler implements LogActivityInterface
      * @return mixed
      */
     public function getLatestLoginLogs($limit = null) {
-        return UserLoginActivity::latest()->where('event', '=', 'login')->take($this->setLimit($limit))->get();
+        return UserLoginActivity::where('event', '=', 'login')->take($this->setLimit($limit))->get();
     }
 
     /**
@@ -106,7 +106,7 @@ class EloquentHandler implements LogActivityInterface
      * @return mixed
      */
     public function getLatestLogoutLogs($limit = null) {
-        return UserLoginActivity::latest()->where('event', '=', 'logout')->take($this->setLimit($limit))->get();
+        return UserLoginActivity::where('event', '=', 'logout')->take($this->setLimit($limit))->get();
     }
 
     /**
@@ -117,13 +117,14 @@ class EloquentHandler implements LogActivityInterface
      * @param bool $remember
      * @return UserLoginActivity
      */
-    protected function createActivity($user_id, $event_name, $remember = false)
+    public function createActivity($user_id, $event_name, $remember = false)
     {
         $activity = new UserLoginActivity();
         $activity->user_id = $user_id;
         $activity->remember = $remember;
         $activity->ip_address = Request::ip();
         $activity->event = $event_name;
+        $activity->createdAt = \Carbon\Carbon::now();
         $activity->save();
 
         return $activity;

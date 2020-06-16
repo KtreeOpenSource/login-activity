@@ -12,7 +12,7 @@ class CreateUserLoginActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_login_activities', function (Blueprint $table) {
+        Schema::create('user__login_activities', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable()->default(null);
             $table->string('ip_address', 64);
@@ -35,6 +35,6 @@ class CreateUserLoginActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_login_activities');
+        Schema::drop('user__login_activities');
     }
 }

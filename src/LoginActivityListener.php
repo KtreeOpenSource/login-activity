@@ -32,11 +32,13 @@ class LoginActivityListener
      */
     public function subscribe($events)
     {
+
         if (config('login-activity.track_login', false)) {
             $events->listen(
                 \Illuminate\Auth\Events\Login::class,
                 'Aginev\LoginActivity\LoginActivityListener@onUserLogin'
             );
+            //echo '<pre>'; print_r($events);exit;
         }
 
         if (config('login-activity.track_logout', false)) {
